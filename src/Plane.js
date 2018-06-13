@@ -1,5 +1,9 @@
 'use strict';
 
-// var Plane = function(){};
-function Plane(){}
-Plane.prototype.land = function(){};
+function Plane (){}
+
+var plane = new Plane
+
+Plane.prototype.land = function () {
+
+};
