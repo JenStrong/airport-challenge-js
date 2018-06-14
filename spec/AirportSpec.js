@@ -23,7 +23,7 @@ describe('Airport', function(){
     airport.clearForTakeoff(plane);
     expect(airport.planes()).toEqual([]);
   });
-  
+
   it('checks for stormy weather', function(){
     expect(airport.isStormy()).toBeFalsy();
   });
@@ -31,5 +31,10 @@ describe('Airport', function(){
   it('prevents planes from takeoff when stormy', function(){
     spyOn(airport, 'isStormy').and.returnValue(true); //why don't you need a plane to land here?
     expect(function(){airport.clearForTakeoff(plane); }).toThrowError('cannot takeoff during storm'); //why do we need the word function here?
+  });
+
+  it('stops plane from landing when weather is stormy', function(){
+    spyOn(airport,'isStormy').and.returnValue(true); //why don't you need a plane to land here?
+    expect(function(){airport.clearForLanding(plane); }).toThrowError('cannot land during storm'); //why do we need the word function here?
   });
 });
