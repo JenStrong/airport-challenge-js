@@ -16,9 +16,9 @@ Airport.prototype.clearForTakeoff = function (plane) {
   if(this.isStormy()) {
   throw new Error('cannot takeoff during storm');
   }
-  this._hanger = [];
+  this._hangar = [];
 };
 
 Airport.prototype.isStormy = function () {
-  return false //why do we need this line?
+  return false
 };

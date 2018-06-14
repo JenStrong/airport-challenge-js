@@ -18,12 +18,18 @@ describe('Airport', function(){
     expect(airport.planes()).toEqual([plane]);
   });
 
+  it('can clear planes for takeoff', function(){
+    airport.clearForLanding(plane);
+    airport.clearForTakeoff(plane);
+    expect(airport.planes()).toEqual([]);
+  });
+  
   it('checks for stormy weather', function(){
     expect(airport.isStormy()).toBeFalsy();
   });
 
   it('prevents planes from takeoff when stormy', function(){
     spyOn(airport, 'isStormy').and.returnValue(true); //why don't you need a plane to land here?
-    expect(function(){airport.clearForTakeoff(plane); }).toThrowError('cannot takeoff during storm');
+    expect(function(){airport.clearForTakeoff(plane); }).toThrowError('cannot takeoff during storm'); //why do we need the word function here?
   });
 });
