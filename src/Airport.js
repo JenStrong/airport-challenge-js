@@ -1,12 +1,24 @@
 'use strict';
 
-function Airport (){
-
-}
-
-var airport = new Airport
-var planes = []
+function Airport(){
+this._hangar = [];
+};
 
 Airport.prototype.planes = function() {
-  return planes;
+  return this._hangar;
+};
+
+Airport.prototype.clearForLanding = function(plane) {
+  this._hangar.push(plane);
+};
+
+Airport.prototype.clearForTakeoff = function (plane) {
+  if(this.isStormy()) {
+  throw new Error('cannot takeoff during storm');
+  }
+  this._hanger = [];
+};
+
+Airport.prototype.isStormy = function () {
+  return false //why do we need this line?
 };
